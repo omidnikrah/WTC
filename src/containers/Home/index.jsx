@@ -16,8 +16,6 @@ class Home extends Component {
 		});
 	}
 	handleAddNewButtonClick = () => {
-		// console.log('add new button');
-		// addNewProject('Aparat', 'red');
 		const { history: { push } } = this.props;
 		push(`/addnewproject`);
 	};

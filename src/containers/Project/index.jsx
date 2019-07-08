@@ -4,18 +4,59 @@ import ProjectItem from '../Home/components/ProjectItem';
 import Layout from '../../components/Layout';
 import Button from '../../components/Button';
 import { StartStopButton } from './styles';
-import { getProject } from '../../db';
+import { getProject, setTime, getProjectTimes } from '../../db';
 
 class Project extends Component {
-	state = {
-		projectData: {}
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			projectData: {},
+			isStarted: false,
+			timer: 0
+		};
+	}
 
 	componentDidMount() {
 		const { match: { params: { projectName } } } = this.props;
 		this.setState({
 			projectData: getProject(projectName)
 		});
+	}
+
+	handleClickStartButton = () => {
+		const { isStarted, timer } = this.state;
+		const { match: { params: { projectName } } } = this.props;
+		if (!isStarted) {
+			this.timerInterval = setInterval(() => {
+				this.setState(({ timer }: any) => ({
+					timer: ++timer
+				}));
+			}, 1000);
+		} else {
+			clearInterval(this.timerInterval);
+			setTime(timer, projectName);
+			this.setState({
+				timer: 0
+			});
+		}
+		this.setState(({ isStarted }: any) => ({
+			isStarted: !isStarted
+		}));
+	};
+
+	secondsToNormalTime(duration) {
+		let hours = Math.floor(duration / 3600),
+			minutes = Math.floor((duration - hours * 3600) / 60),
+			seconds = duration - hours * 3600 - minutes * 60;
+
+		hours = hours < 10 ? `0${hours}` : hours;
+		minutes = minutes < 10 ? `0${minutes}` : minutes;
+		seconds = seconds < 10 ? `0${seconds}` : seconds;
+		if (hours > 0) {
+			return `${hours}:${minutes}:${seconds}`;
+		} else {
+			return `${minutes}:${seconds}`;
+		}
 	}
 
 	renderHeader = () => {
@@ -52,25 +93,36 @@ class Project extends Component {
 		push(`/project/${projectName}/advanced`);
 	};
 
-	renderFooter = () => (
-		<div className="project-footer">
-			<span className="key-value">
-				<span className="key">Total Time:</span>
-				<span className="value">23:42</span>
-			</span>
-			<span className="key-value">
-				<span className="key">Total Income:</span>
-				<span className="value">2,400,000</span>
-			</span>
-		</div>
-	);
+	renderFooter = () => {
+		const { match: { params: { projectName } } } = this.props;
+		const seconds = getProjectTimes(projectName);
+		return (
+			<div className="project-footer">
+				<span className="key-value">
+					<span className="key">Total Time:</span>
+					<span className="value">{this.secondsToNormalTime(seconds)}</span>
+				</span>
+				<span className="key-value">
+					<span className="key">Total Income:</span>
+					<span className="value">2,400,000</span>
+				</span>
+			</div>
+		);
+	};
+
+	componentWillUnmount() {
+		const { match: { params: { projectName } } } = this.props;
+		const { timer } = this.state;
+		clearInterval(this.timerInterval);
+		setTime(timer, projectName);
+	}
 
 	render() {
-		const { projectData } = this.state;
+		const { projectData, isStarted, timer } = this.state;
 		return (
 			<Layout headerColor={projectData.color} header={this.renderHeader()} footer={this.renderFooter()}>
-				<StartStopButton isStarted={false} />
-				<span className="working-time">00:00</span>
+				<StartStopButton isStarted={isStarted} onClick={this.handleClickStartButton} />
+				<span className="working-time">{this.secondsToNormalTime(timer)}</span>
 			</Layout>
 		);
 	}

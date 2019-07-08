@@ -15,7 +15,28 @@
     {
       "name": "Abbas",
       "color": "#74ff96"
+    },
+    {
+      "name": "Abbas",
+      "color": "#ff7cd4"
     }
   ],
-  "times": []
+  "times": [
+    {
+      "seconds": 44,
+      "projectName": "Filimo"
+    },
+    {
+      "seconds": 4,
+      "projectName": "Aparat"
+    },
+    {
+      "seconds": 13,
+      "projectName": "Abbas"
+    },
+    {
+      "seconds": 3,
+      "projectName": "Shab"
+    }
+  ]
 }
