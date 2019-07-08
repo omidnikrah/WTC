@@ -5,8 +5,13 @@ export default styled.div`
     padding: 20px 30px;
   }
   .content {
-    height: 80vh;
+    height: 64vh;
     overflow: auto;
+  }
+  .footer {
+    padding: 15px 30px;
+    overflow: hidden;
+    background-color: rgba(255,255,255,0.01);
   }
   .header {
     position: relative;

@@ -16,6 +16,9 @@ import SegoeUIBoldEot from './assets/fonts/segoeUI/SegoeUIBold.eot';
 import SegoeUIBoldTtf from './assets/fonts/segoeUI/SegoeUIBold.ttf';
 import SegoeUIBoldWoff from './assets/fonts/segoeUI/SegoeUIBold.woff';
 
+import ExitIcon from '../containers/Home/assets/exit.svg';
+import SettingsIcon from '../containers/Home/assets/settings.svg';
+
 export default createGlobalStyle`
   @font-face {
     font-family: SegoeUI;
@@ -89,5 +92,29 @@ export default createGlobalStyle`
   .fade-exit-active{
     opacity: 0.01;
     transition: opacity 350ms ease;
+  }
+  .icon {
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    appearance: none;
+    background-color: transparent;
+    border: 0;
+    width: 20px;
+    height: 20px;
+    outline: 0;
+    &.icon-exit {
+      background-image: url(${ExitIcon});
+    }
+    &.icon-settings {
+      background-image: url(${SettingsIcon});
+    }
+  }
+  .home-footer {
+    float: right;
+    .icon {
+      margin-left: 20px;
+      float: right;
+    }
   }
 `;
