@@ -48,12 +48,14 @@ export default createGlobalStyle`
   body {
     position: relative;
     height: 100vh;
-    background-color: #fafafa;
-    color: #444;
+    background-color: #191C24;
+    color: #fff;
     font-family: 'SegoeUI', sans-serif;
     overflow-y: hidden;
     padding: 0;
     margin: 0;
+    font-size: 14px;
+    font-weight: normal;
   }
   #root {
     width: 100%;

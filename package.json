@@ -51,7 +51,10 @@
 			"prettier --ignore-path .eslintignore --single-quote --write",
 			"git add"
 		],
-		"*.{yml,md}": [ "prettier --ignore-path .eslintignore --single-quote --write", "git add" ]
+		"*.{yml,md}": [
+			"prettier --ignore-path .eslintignore --single-quote --write",
+			"git add"
+		]
 	},
 	"main": "./src/app/main.prod.js",
 	"build": {
@@ -80,10 +83,18 @@
 			]
 		},
 		"win": {
-			"target": [ "nsis", "msi" ]
+			"target": [
+				"nsis",
+				"msi"
+			]
 		},
 		"linux": {
-			"target": [ "deb", "rpm", "snap", "AppImage" ],
+			"target": [
+				"deb",
+				"rpm",
+				"snap",
+				"AppImage"
+			],
 			"category": "Development"
 		},
 		"directories": {
@@ -109,7 +120,16 @@
 	"bugs": {
 		"url": ""
 	},
-	"keywords": [ "electron", "boilerplate", "react", "flow", "sass", "webpack", "hot", "reload" ],
+	"keywords": [
+		"electron",
+		"boilerplate",
+		"react",
+		"flow",
+		"sass",
+		"webpack",
+		"hot",
+		"reload"
+	],
 	"homepage": "",
 	"jest": {
 		"testURL": "http://localhost/",
@@ -117,11 +137,17 @@
 			"\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/fileMock.js",
 			"\\.(css|less|sass|scss)$": "identity-obj-proxy"
 		},
-		"moduleFileExtensions": [ "js", "jsx", "json" ],
+		"moduleFileExtensions": [
+			"js",
+			"jsx",
+			"json"
+		],
 		"transform": {
 			"^.+\\.jsx?$": "babel-jest"
 		},
-		"setupFiles": [ "./internals/scripts/CheckBuiltsExist.js" ]
+		"setupFiles": [
+			"./internals/scripts/CheckBuiltsExist.js"
+		]
 	},
 	"devDependencies": {
 		"@babel/core": "^7.2.0",
@@ -222,8 +248,6 @@
 		"electron-log": "^2.2.17",
 		"electron-updater": "^4.0.5",
 		"final-form": "^4.10.0",
-		"graphql": "^14.0.2",
-		"graphql-tag": "^2.10.0",
 		"history": "^4.7.2",
 		"react": "^16.6.3",
 		"react-dom": "^16.6.3",
