@@ -7,18 +7,23 @@ export default styled.div`
   .content {
     height: 64vh;
     overflow: auto;
+    position: relative;
   }
   .footer {
     padding: 15px 30px;
     overflow: hidden;
     background-color: rgba(255,255,255,0.01);
+    height: 52px;
   }
   .header {
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    &::after {
+    display: inline-block;
+    width: 100%;
+    .icon, span {
+      vertical-align: middle;
+      margin-top: 3px;
+    }
+    &:not(.no-border)::after {
       content: '';
       position: absolute;
       right: 10px;

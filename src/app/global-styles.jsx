@@ -18,6 +18,7 @@ import SegoeUIBoldWoff from './assets/fonts/segoeUI/SegoeUIBold.woff';
 
 import ExitIcon from '../containers/Home/assets/exit.svg';
 import SettingsIcon from '../containers/Home/assets/settings.svg';
+import BackIcon from '../containers/Project/assets/left-arrow.svg';
 
 export default createGlobalStyle`
   @font-face {
@@ -109,6 +110,10 @@ export default createGlobalStyle`
     &.icon-settings {
       background-image: url(${SettingsIcon});
     }
+    &.icon-back {
+      background-image: url(${BackIcon});
+      margin-right: 20px;
+    }
   }
   .home-footer {
     float: right;
@@ -116,5 +121,28 @@ export default createGlobalStyle`
       margin-left: 20px;
       float: right;
     }
+  }
+  .key-value {
+    font-size: 12px;
+    font-weight: 100;
+    .value {
+      font-weight: bold;
+      letter-spacing: 3px;
+      margin-left: 5px;
+    }
+  }
+  .project-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+  .working-time {
+    font-size: 40px;
+    font-weight: 100;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 80px;
   }
 `;

@@ -2,9 +2,14 @@
 import React from 'react';
 import LayoutWrapper from './styles';
 
-const Layout = ({ header, footer, children }: any) => (
+const Layout = ({ header, headerColor, footer, children }: any) => (
     <LayoutWrapper>
-        <header className="header">{header}</header>
+        <header
+            style={headerColor ? { backgroundColor: headerColor } : {}}
+            className={`header${headerColor ? ' no-border' : ''}`}
+        >
+            {header}
+        </header>
         <div className="content">{children}</div>
         <footer className="footer">{footer}</footer>
     </LayoutWrapper>

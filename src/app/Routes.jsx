@@ -10,7 +10,7 @@ export default () => (
     <HashRouter>
       <React.Fragment>
           <Route path="/" component={HomePage} exact />
-          <Route path="/project/:projectName" component={ProjectPage} exact />
+          <Route path="/project/:projectName" component={ProjectPage} />
       </React.Fragment>
     </HashRouter>
   </React.Fragment>

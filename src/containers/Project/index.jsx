@@ -3,44 +3,58 @@ import React, {Component, Fragment} from 'react';
 import ProjectItem from "../Home/components/ProjectItem";
 import Layout from "../../components/Layout";
 import Button from "../../components/Button";
+import { StartStopButton } from './styles';
 
 class Project extends Component {
 
-    renderHeader = () => (
-        <Fragment>
-            <span>Choose a project</span>
-            <Button
-                className="add-new-project"
-                type="button"
-                style={{ float: 'right' }}
-                onClick={this.handleAddNewButtonClick}
-            >
-                Add New Project
-            </Button>
-        </Fragment>
-    );
+    renderHeader = () => {
+        const { match: { params: { projectName } } } = this.props;
+        return (
+            <Fragment>
+                <button
+                    type="button"
+                    className="icon icon-back"
+                    onClick={this.handleBack}
+                />
+                <span>{projectName}</span>
+                <Button
+                    className="project-advanced"
+                    type="button"
+                    style={{ float: 'right' }}
+                    onClick={this.handleProjectAdvanced}
+                >
+                    Advanced...
+                </Button>
+            </Fragment>
+        );
+    }
+
+    handleBack = () => {
+        history.back();
+    }
+
+    handleProjectAdvanced = () => {
+        console.log('advanced');
+    }
 
     renderFooter = () => (
-        <div className="home-footer">
-            <button
-                type="button"
-                className="icon icon-exit"
-                onClick={this.handleExit}
-            />
-            <button
-                type="button"
-                className="icon icon-settings"
-                onClick={this.handleGoToSettings}
-            />
+        <div className="project-footer">
+            <span className="key-value">
+                <span className="key">Total Time:</span>
+                <span className="value">23:42</span>
+            </span>
+            <span className="key-value">
+                <span className="key">Total Income:</span>
+                <span className="value">2,400,000</span>
+            </span>
         </div>
     );
 
     render() {
         return (
-            <Layout header={this.renderHeader()} footer={this.renderFooter()}>
-                <ProjectItem name="Aparat" color="#DF0F50" />
-                <ProjectItem name="Filimo" color="#FFBE00" />
-                <ProjectItem name="Shab" color="#1862AE" />
+            <Layout headerColor="#1862AE" header={this.renderHeader()} footer={this.renderFooter()}>
+                <StartStopButton isStarted={false} />
+                <span className="working-time">00:00</span>
             </Layout>
         );
     }
