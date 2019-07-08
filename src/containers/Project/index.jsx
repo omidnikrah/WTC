@@ -16,7 +16,10 @@ class Project extends Component {
                     className="icon icon-back"
                     onClick={this.handleBack}
                 />
-                <span>{projectName}</span>
+                <span style={{
+                    fontWeight: 'bold',
+                    fontSize: 17,
+                }}>{projectName}</span>
                 <Button
                     className="project-advanced"
                     type="button"
@@ -34,7 +37,8 @@ class Project extends Component {
     }
 
     handleProjectAdvanced = () => {
-        console.log('advanced');
+        const { history: { push }, match: { params: { projectName } } } = this.props;
+        push(`/project/${projectName}/advanced`);
     }
 
     renderFooter = () => (

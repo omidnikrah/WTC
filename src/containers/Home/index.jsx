@@ -4,10 +4,12 @@ import { remote } from 'electron';
 import Layout from "../../components/Layout";
 import Button from "../../components/Button";
 import ProjectItem from "./components/ProjectItem";
+import { addNewProject } from '../../db';
 
 class Home extends Component {
     handleAddNewButtonClick = () => {
         console.log('add new button');
+        addNewProject('Aparat', 'red');
     };
 
     handleExit = () => {
