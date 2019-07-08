@@ -19,9 +19,11 @@ export default styled.div`
     position: relative;
     display: inline-block;
     width: 100%;
+    height: 67px;
     .icon, span {
       vertical-align: middle;
       margin-top: 3px;
+      display: inline-block;
     }
     &:not(.no-border)::after {
       content: '';
@@ -30,7 +32,7 @@ export default styled.div`
       left: 10px;
       height: 1px;
       bottom: 0;
-      background-color: rgba(0,0,0,0.4);
+      background-color: rgba(0,0,0,0.2);
     }
   }
 `;

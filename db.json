@@ -1,9 +1,21 @@
 {
-	"projects": [
-		{
-			"name": "Aparat",
-			"color": "red"
-		}
-	],
-	"times": []
+  "projects": [
+    {
+      "name": "Aparat",
+      "color": "#DF0F50"
+    },
+    {
+      "name": "Filimo",
+      "color": "#FFBE00"
+    },
+    {
+      "name": "Shab",
+      "color": "#4f68ff"
+    },
+    {
+      "name": "Abbas",
+      "color": "#74ff96"
+    }
+  ],
+  "times": []
 }

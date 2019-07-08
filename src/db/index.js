@@ -6,6 +6,14 @@ const db = low(adapter);
 
 db.defaults({ projects: [], times: [] }).write();
 
+const getProjects = () => {
+  return db.get('projects').value();
+};
+
+const getProject = (projectName) => {
+  return db.get('projects').find({ name: projectName }).value();
+};
+
 const addNewProject = (projectName, projectColor) => {
   db.get('projects')
   .push({
@@ -17,4 +25,6 @@ const addNewProject = (projectName, projectColor) => {
 
 export {
   addNewProject,
+  getProjects,
+  getProject,
 };
