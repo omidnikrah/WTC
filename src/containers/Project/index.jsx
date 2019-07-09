@@ -1,6 +1,5 @@
 // @flow
 import React, { Component, Fragment } from 'react';
-import ProjectItem from '../Home/components/ProjectItem';
 import Layout from '../../components/Layout';
 import Button from '../../components/Button';
 import { StartStopButton } from './styles';
@@ -23,75 +22,15 @@ class Project extends Component {
 		});
 	}
 
-	handleClickStartButton = () => {
-		const { isStarted, timer } = this.state;
+	componentWillUnmount() {
 		const { match: { params: { projectName } } } = this.props;
-		if (!isStarted) {
-			this.timerInterval = setInterval(() => {
-				this.setState(({ timer }: any) => ({
-					timer: ++timer
-				}));
-			}, 1000);
-		} else {
-			clearInterval(this.timerInterval);
-			setTime(timer, projectName);
-			this.setState({
-				timer: 0
-			});
-		}
-		this.setState(({ isStarted }: any) => ({
-			isStarted: !isStarted
-		}));
-	};
-
-	secondsToNormalTime = (duration) => {
-		let hours = Math.floor(duration / 3600);
-		let minutes = Math.floor((duration - hours * 3600) / 60);
-		let seconds = duration - hours * 3600 - minutes * 60;
-
-		hours = hours < 10 ? `0${hours}` : hours;
-		minutes = minutes < 10 ? `0${minutes}` : minutes;
-		seconds = seconds < 10 ? `0${seconds}` : seconds;
-		if (hours > 0) {
-			return `${hours}:${minutes}:${seconds}`;
-		}
-		return `${minutes}:${seconds}`;
-	};
-
-	calculateTotalIncome = (duration) => {
-		const hours = Math.floor(duration / 3600);
-		const { projectData } = this.state;
-		if (projectData.incomePerHours && hours > 0) {
-			return hours * projectData.incomePerHours;
-		}
-	};
-
-	renderHeader = () => {
-		const { match: { params: { projectName } } } = this.props;
-		return (
-			<Fragment>
-				<button type="button" className="icon icon-back" onClick={this.handleBack} />
-				<span
-					style={{
-						fontWeight: 'bold',
-						fontSize: 17
-					}}
-				>
-					{projectName}
-				</span>
-				<Button
-					className="project-advanced"
-					type="button"
-					style={{ float: 'right' }}
-					onClick={this.handleProjectAdvanced}
-				>
-					Advanced...
-				</Button>
-			</Fragment>
-		);
-	};
+		const { timer } = this.state;
+		clearInterval(this.timerInterval);
+		setTime(timer, projectName);
+	}
 
 	handleBack = () => {
+		const { history } = this.props;
 		history.back();
 	};
 
@@ -120,12 +59,76 @@ class Project extends Component {
 		);
 	};
 
-	componentWillUnmount() {
+	renderHeader = () => {
 		const { match: { params: { projectName } } } = this.props;
-		const { timer } = this.state;
-		clearInterval(this.timerInterval);
-		setTime(timer, projectName);
-	}
+		return (
+			<Fragment>
+				<button type="button" className="icon icon-back" onClick={this.handleBack} />
+				<span
+					style={{
+						fontWeight: 'bold',
+						fontSize: 17
+					}}
+				>
+					{projectName}
+				</span>
+				<Button
+					className="project-advanced"
+					type="button"
+					style={{ float: 'right' }}
+					onClick={this.handleProjectAdvanced}
+				>
+					Advanced...
+				</Button>
+			</Fragment>
+		);
+	};
+
+	calculateTotalIncome = (duration) => {
+		const hours = Math.floor(duration / 3600);
+		const { projectData } = this.state;
+		if (projectData.incomePerHours && hours > 0) {
+			return hours * projectData.incomePerHours;
+		}
+	};
+
+	secondsToNormalTime = (duration) => {
+		let hours = Math.floor(duration / 3600);
+		let minutes = Math.floor((duration - hours * 3600) / 60);
+		let seconds = duration - hours * 3600 - minutes * 60;
+
+		hours = hours < 10 ? `0${hours}` : hours;
+		minutes = minutes < 10 ? `0${minutes}` : minutes;
+		seconds = seconds < 10 ? `0${seconds}` : seconds;
+		if (hours > 0) {
+			return `${hours}:${minutes}:${seconds}`;
+		}
+		return `${minutes}:${seconds}`;
+	};
+
+	handleClickStartButton = () => {
+		const { isStarted, timer } = this.state;
+		const { match: { params: { projectName } } } = this.props;
+		if (!isStarted) {
+			this.timerInterval = setInterval(() => {
+				// eslint-disable-next-line no-shadow
+				this.setState(({ timer }: any) => ({
+					// eslint-disable-next-line no-param-reassign,no-plusplus
+					timer: ++timer
+				}));
+			}, 1000);
+		} else {
+			clearInterval(this.timerInterval);
+			setTime(timer, projectName);
+			this.setState({
+				timer: 0
+			});
+		}
+		// eslint-disable-next-line no-shadow
+		this.setState(({ isStarted }: any) => ({
+			isStarted: !isStarted
+		}));
+	};
 
 	render() {
 		const { projectData, isStarted, timer } = this.state;

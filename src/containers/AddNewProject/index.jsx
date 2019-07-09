@@ -26,11 +26,14 @@ class AddNewProject extends Component {
 	);
 
 	handleBack = () => {
+		const { history } = this.props;
 		history.back();
 	};
 
 	handleAddProject = () => {
-		addNewProject(this.state.projectName, this.state.projectColor);
+		const { history } = this.props;
+		const { projectName, projectColor } = this.state;
+		addNewProject(projectName, projectColor);
 		history.back();
 	};
 

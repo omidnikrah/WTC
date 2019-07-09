@@ -43,11 +43,12 @@ class Advanced extends Component {
 	};
 
 	handleBack = () => {
+		const { history } = this.props;
 		history.back();
 	};
 
 	handleUpdate = () => {
-		const { match: { params: { projectName } } } = this.props;
+		const { match: { params: { projectName } }, history } = this.props;
 		const { income } = this.state;
 		updateProject(projectName, {
 			incomePerHours: income,
