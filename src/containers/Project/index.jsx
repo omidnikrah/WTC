@@ -12,7 +12,7 @@ class Project extends Component {
 		this.state = {
 			projectData: {},
 			isStarted: false,
-			timer: 0
+			timer: 0,
 		};
 	}
 
@@ -44,20 +44,27 @@ class Project extends Component {
 		}));
 	};
 
-	secondsToNormalTime(duration) {
-		let hours = Math.floor(duration / 3600),
-			minutes = Math.floor((duration - hours * 3600) / 60),
-			seconds = duration - hours * 3600 - minutes * 60;
+	secondsToNormalTime = (duration) => {
+		let hours = Math.floor(duration / 3600);
+		let minutes = Math.floor((duration - hours * 3600) / 60);
+		let seconds = duration - hours * 3600 - minutes * 60;
 
 		hours = hours < 10 ? `0${hours}` : hours;
 		minutes = minutes < 10 ? `0${minutes}` : minutes;
 		seconds = seconds < 10 ? `0${seconds}` : seconds;
 		if (hours > 0) {
 			return `${hours}:${minutes}:${seconds}`;
-		} else {
-			return `${minutes}:${seconds}`;
 		}
-	}
+		return `${minutes}:${seconds}`;
+	};
+
+	calculateTotalIncome = (duration) => {
+		const hours = Math.floor(duration / 3600);
+		const { projectData } = this.state;
+		if (projectData.incomePerHours && hours > 0) {
+			return hours * projectData.incomePerHours;
+		}
+	};
 
 	renderHeader = () => {
 		const { match: { params: { projectName } } } = this.props;
@@ -96,16 +103,19 @@ class Project extends Component {
 	renderFooter = () => {
 		const { match: { params: { projectName } } } = this.props;
 		const seconds = getProjectTimes(projectName);
+		const totalIncome = this.calculateTotalIncome(seconds);
 		return (
 			<div className="project-footer">
 				<span className="key-value">
 					<span className="key">Total Time:</span>
 					<span className="value">{this.secondsToNormalTime(seconds)}</span>
 				</span>
-				<span className="key-value">
-					<span className="key">Total Income:</span>
-					<span className="value">2,400,000</span>
-				</span>
+				{totalIncome && (
+					<span className="key-value">
+						<span className="key">Total Income:</span>
+						<span className="value">{totalIncome}</span>
+					</span>
+				)}
 			</div>
 		);
 	};

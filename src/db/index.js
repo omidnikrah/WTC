@@ -50,10 +50,18 @@ const getProjectTimes = (projectName) => {
   return 0;
 };
 
+const updateProject = (projectName, data) => {
+  db.get('projects')
+    .find({ name: projectName })
+    .assign(data)
+    .write()
+};
+
 export {
   addNewProject,
   getProjects,
   getProject,
   setTime,
   getProjectTimes,
+  updateProject,
 };

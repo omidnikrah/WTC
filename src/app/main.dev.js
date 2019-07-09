@@ -4,12 +4,9 @@ import { app, BrowserWindow, Tray, shell } from 'electron';
 import path from 'path';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
-import { pathExists } from 'fs-extra-p';
 
 const width = 410;
 const height = 330;
-
-let mainWindow = null;
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
@@ -22,16 +19,6 @@ if (
 ) {
   require('electron-debug')();
 }
-
-const installExtensions = async () => {
-  const installer = require('electron-devtools-installer');
-  const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
-  const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS'];
-
-  return Promise.all(
-    extensions.map(name => installer.default(installer[name], forceDownload))
-  ).catch(console.log);
-};
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -112,7 +99,7 @@ app.on('ready', async () => {
     }
   });
 
-  window.webContents.once('did-frame-finish-load', function() {
+  window.webContents.once('did-frame-finish-load', () => {
     autoUpdater.checkForUpdatesAndNotify();
   });
 

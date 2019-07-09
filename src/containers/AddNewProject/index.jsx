@@ -11,21 +11,19 @@ class AddNewProject extends Component {
 		projectColor: ''
 	};
 
-	renderHeader = () => {
-		return (
-			<Fragment>
-				<button type="button" className="icon icon-back" onClick={this.handleBack} />
-				<span
-					style={{
-						fontWeight: 'bold',
-						fontSize: 17
-					}}
-				>
+	renderHeader = () => (
+		<Fragment>
+			<button type="button" className="icon icon-back" onClick={this.handleBack} />
+			<span
+				style={{
+					fontWeight: 'bold',
+					fontSize: 17
+				}}
+			>
 					Add New Project
 				</span>
-			</Fragment>
-		);
-	};
+		</Fragment>
+	);
 
 	handleBack = () => {
 		history.back();
