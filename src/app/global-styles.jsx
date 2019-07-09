@@ -145,4 +145,22 @@ export default createGlobalStyle`
     transform: translateY(-50%);
     right: 80px;
   }
+  
+  .simpleFade-enter {
+    opacity: 0;
+  }
+
+  .simpleFade-enter.simpleFade-enter-active {
+    opacity: 1;
+    transition: opacity 400ms ease;
+  }
+
+  .simpleFade-exit {
+    opacity: 1;
+  }
+
+  .simpleFade-exit.simpleFade-exit-active {
+    opacity: 0;
+    transition: opacity 400ms ease;
+  }
 `;

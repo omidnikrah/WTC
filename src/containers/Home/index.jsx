@@ -4,17 +4,19 @@ import { remote } from 'electron';
 import Layout from '../../components/Layout';
 import Button from '../../components/Button';
 import ProjectItem from './components/ProjectItem';
-import { addNewProject, getProjects } from '../../db';
+import { getProjects } from '../../db';
 
 class Home extends Component {
 	state = {
 		projects: []
 	};
+
 	componentDidMount() {
 		this.setState({
 			projects: getProjects()
 		});
 	}
+
 	handleAddNewButtonClick = () => {
 		const { history: { push } } = this.props;
 		push(`/addnewproject`);

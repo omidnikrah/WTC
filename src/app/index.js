@@ -1,22 +1,26 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import Root from './Root';
+import GlobalStyles from "./global-styles";
+import Routes from "./Routes";
 
 render(
   <AppContainer>
-    <Root history={history} />
+      <Fragment>
+          <GlobalStyles />
+          <Routes />
+      </Fragment>
   </AppContainer>,
   document.getElementById('root')
 );
 
 if (module.hot) {
-  module.hot.accept('./Root', () => {
+  module.hot.accept('./Routes', () => {
     // eslint-disable-next-line global-require
-    const NextRoot = require('./Root').default;
+    const NextRoot = require('./Routes').default;
     render(
       <AppContainer>
-        <NextRoot history={history} />
+        <NextRoot />
       </AppContainer>,
       document.getElementById('root')
     );
