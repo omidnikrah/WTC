@@ -1,15 +1,11 @@
 import React, {Fragment} from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import GlobalStyles from "./global-styles";
 import Routes from "./Routes";
 
 render(
   <AppContainer>
-      <Fragment>
-          <GlobalStyles />
-          <Routes />
-      </Fragment>
+      <Routes />
   </AppContainer>,
   document.getElementById('root')
 );
