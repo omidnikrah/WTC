@@ -44,7 +44,7 @@ class Advanced extends Component {
 
 	handleBack = () => {
 		const { history } = this.props;
-		history.back();
+		history.goBack();
 	};
 
 	handleUpdate = () => {
@@ -53,7 +53,7 @@ class Advanced extends Component {
 		updateProject(projectName, {
 			incomePerHours: income,
 		});
-		history.back();
+		history.goBack();
 	};
 
 	render() {

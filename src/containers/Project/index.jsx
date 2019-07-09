@@ -31,7 +31,7 @@ class Project extends Component {
 
 	handleBack = () => {
 		const { history } = this.props;
-		history.back();
+		history.goBack();
 	};
 
 	handleProjectAdvanced = () => {

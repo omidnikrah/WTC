@@ -8,7 +8,10 @@ import { addNewProject } from '../../db';
 class AddNewProject extends Component {
 	state = {
 		projectName: '',
-		projectColor: ''
+		projectColor: '#ff5526',
+		errors: {
+			projectName: '',
+		},
 	};
 
 	renderHeader = () => (
@@ -27,24 +30,37 @@ class AddNewProject extends Component {
 
 	handleBack = () => {
 		const { history } = this.props;
-		history.back();
+		history.goBack();
 	};
 
 	handleAddProject = () => {
 		const { history } = this.props;
 		const { projectName, projectColor } = this.state;
-		addNewProject(projectName, projectColor);
-		history.back();
+		if (projectName.length > 0) {
+			addNewProject(projectName, projectColor);
+			history.goBack();
+		} else {
+			this.setState({
+				errors: {
+					projectName: "Please write your project name",
+				}
+			});
+		}
 	};
 
 	handleInputChange = (event) => {
 		this.setState({
 			[event.target.name]: event.target.value
 		});
+		this.setState({
+			errors: {
+				projectName: "",
+			}
+		});
 	};
 
 	render() {
-		const { projectName, projectColor } = this.state;
+		const { projectName, projectColor, errors } = this.state;
 		return (
 			<Layout header={this.renderHeader()}>
 				<form>
@@ -53,6 +69,7 @@ class AddNewProject extends Component {
 						type="text"
 						name="projectName"
 						value={projectName}
+						errorMessage={errors.projectName}
 						onChange={this.handleInputChange}
 					/>
 					<Input

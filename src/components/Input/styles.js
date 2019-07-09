@@ -4,6 +4,7 @@ export default styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  flex-wrap: wrap;
   label {
     flex: 0.6;
     font-weight: 100;
@@ -30,5 +31,12 @@ export default styled.div`
   }
   input[type="color"]::-webkit-color-swatch {
     border: none;
+  }
+  .error-message {
+    display: block;
+    color: #ff2a2a;
+    font-size: 13px;
+    width: 100%;
+    margin: 10px 0;
   }
 `;
