@@ -28,8 +28,9 @@ app.on('window-all-closed', () => {
 
 app.on('ready', async () => {
   const tray = new Tray(
-    path.join(__dirname, '../../resources/iconTemplate.png'),
+    path.join(__dirname, '../../resources/icon.png'),
   );
+
   let window = null;
   const showWindow = () => {
     const trayPos = tray.getBounds();
@@ -74,7 +75,6 @@ app.on('ready', async () => {
   tray.on('double-click', toggleWindow);
   tray.on('click', (event) => {
     toggleWindow();
-
     if (window.isVisible() && process.defaultApp && event.metaKey) {
       window.openDevTools({ mode: 'detach' });
     }
@@ -97,6 +97,16 @@ app.on('ready', async () => {
     if (!window.webContents.isDevToolsOpened()) {
       window.hide();
     }
+  });
+
+  window.on('show', () => {
+    tray.setHighlightMode('always');
+    tray.setImage(path.join(__dirname, '../../resources/icon-pressed.png'));
+  });
+
+  window.on('hide', () => {
+    tray.setHighlightMode('never');
+    tray.setImage(path.join(__dirname, '../../resources/icon.png'));
   });
 
   window.webContents.once('did-frame-finish-load', () => {

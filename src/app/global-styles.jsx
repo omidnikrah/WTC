@@ -1,24 +1,24 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
-import SegoeUIEot from './assets/fonts/segoeUI/SegoeUI.eot';
-import SegoeUITtf from './assets/fonts/segoeUI/SegoeUI.ttf';
-import SegoeUIWoff from './assets/fonts/segoeUI/SegoeUI.woff';
+import SegoeUIEot from "./assets/fonts/segoeUI/SegoeUI.eot";
+import SegoeUITtf from "./assets/fonts/segoeUI/SegoeUI.ttf";
+import SegoeUIWoff from "./assets/fonts/segoeUI/SegoeUI.woff";
 
-import SegoeUILightEot from './assets/fonts/segoeUI/SegoeUILight.eot';
-import SegoeUILightTtf from './assets/fonts/segoeUI/SegoeUILight.ttf';
-import SegoeUILightWoff from './assets/fonts/segoeUI/SegoeUILight.woff';
+import SegoeUILightEot from "./assets/fonts/segoeUI/SegoeUILight.eot";
+import SegoeUILightTtf from "./assets/fonts/segoeUI/SegoeUILight.ttf";
+import SegoeUILightWoff from "./assets/fonts/segoeUI/SegoeUILight.woff";
 
-import SegoeUISemiBoldEot from './assets/fonts/segoeUI/SegoeUISemibold.eot';
-import SegoeUISemiBoldTtf from './assets/fonts/segoeUI/SegoeUISemibold.ttf';
-import SegoeUISemiBoldWoff from './assets/fonts/segoeUI/SegoeUISemibold.woff';
+import SegoeUISemiBoldEot from "./assets/fonts/segoeUI/SegoeUISemibold.eot";
+import SegoeUISemiBoldTtf from "./assets/fonts/segoeUI/SegoeUISemibold.ttf";
+import SegoeUISemiBoldWoff from "./assets/fonts/segoeUI/SegoeUISemibold.woff";
 
-import SegoeUIBoldEot from './assets/fonts/segoeUI/SegoeUIBold.eot';
-import SegoeUIBoldTtf from './assets/fonts/segoeUI/SegoeUIBold.ttf';
-import SegoeUIBoldWoff from './assets/fonts/segoeUI/SegoeUIBold.woff';
+import SegoeUIBoldEot from "./assets/fonts/segoeUI/SegoeUIBold.eot";
+import SegoeUIBoldTtf from "./assets/fonts/segoeUI/SegoeUIBold.ttf";
+import SegoeUIBoldWoff from "./assets/fonts/segoeUI/SegoeUIBold.woff";
 
-import ExitIcon from '../containers/Home/assets/exit.svg';
-import SettingsIcon from '../containers/Home/assets/settings.svg';
-import BackIcon from '../containers/Project/assets/left-arrow.svg';
+import ExitIcon from "../containers/Home/assets/exit.svg";
+import SettingsIcon from "../containers/Home/assets/settings.svg";
+import BackIcon from "../containers/Project/assets/left-arrow.svg";
 
 export default createGlobalStyle`
   @font-face {
