@@ -51,10 +51,7 @@
 			"prettier --ignore-path .eslintignore --single-quote --write",
 			"git add"
 		],
-		"*.{yml,md}": [
-			"prettier --ignore-path .eslintignore --single-quote --write",
-			"git add"
-		]
+		"*.{yml,md}": [ "prettier --ignore-path .eslintignore --single-quote --write", "git add" ]
 	},
 	"main": "./src/app/main.prod.js",
 	"build": {
@@ -83,18 +80,10 @@
 			]
 		},
 		"win": {
-			"target": [
-				"nsis",
-				"msi"
-			]
+			"target": [ "nsis", "msi" ]
 		},
 		"linux": {
-			"target": [
-				"deb",
-				"rpm",
-				"snap",
-				"AppImage"
-			],
+			"target": [ "deb", "rpm", "snap", "AppImage" ],
 			"category": "Development"
 		},
 		"directories": {
@@ -102,7 +91,7 @@
 			"output": "release"
 		},
 		"publish": {
-			"provider": "wtc",
+			"provider": "github",
 			"owner": "wtc",
 			"repo": "wtc",
 			"private": false
@@ -120,16 +109,7 @@
 	"bugs": {
 		"url": ""
 	},
-	"keywords": [
-		"electron",
-		"boilerplate",
-		"react",
-		"flow",
-		"sass",
-		"webpack",
-		"hot",
-		"reload"
-	],
+	"keywords": [ "electron", "boilerplate", "react", "flow", "sass", "webpack", "hot", "reload" ],
 	"homepage": "",
 	"jest": {
 		"testURL": "http://localhost/",
@@ -137,17 +117,11 @@
 			"\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/fileMock.js",
 			"\\.(css|less|sass|scss)$": "identity-obj-proxy"
 		},
-		"moduleFileExtensions": [
-			"js",
-			"jsx",
-			"json"
-		],
+		"moduleFileExtensions": [ "js", "jsx", "json" ],
 		"transform": {
 			"^.+\\.jsx?$": "babel-jest"
 		},
-		"setupFiles": [
-			"./internals/scripts/CheckBuiltsExist.js"
-		]
+		"setupFiles": [ "./internals/scripts/CheckBuiltsExist.js" ]
 	},
 	"devDependencies": {
 		"@babel/core": "^7.2.0",

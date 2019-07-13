@@ -20,6 +20,10 @@ if (
   require('electron-debug')();
 }
 
+if (process.platform === 'darwin') {
+  app.dock.hide();
+}
+
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
@@ -101,12 +105,12 @@ app.on('ready', async () => {
 
   window.on('show', () => {
     tray.setHighlightMode('always');
-    tray.setImage(path.join(__dirname, '../../resources/icon-pressed.png'));
+    // tray.setImage(path.join(__dirname, '../../resources/icon-pressed.png'));
   });
 
   window.on('hide', () => {
     tray.setHighlightMode('never');
-    tray.setImage(path.join(__dirname, '../../resources/icon.png'));
+    // tray.setImage(path.join(__dirname, '../../resources/icon.png'));
   });
 
   window.webContents.once('did-frame-finish-load', () => {
