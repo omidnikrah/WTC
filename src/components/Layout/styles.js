@@ -8,6 +8,7 @@ export default styled.div`
     height: 64vh;
     overflow: auto;
     position: relative;
+    margin-top: 70px;
   }
   .footer {
     padding: 15px 30px;
@@ -16,7 +17,10 @@ export default styled.div`
     height: 52px;
   }
   .header {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     display: inline-block;
     width: 100%;
     height: 67px;
