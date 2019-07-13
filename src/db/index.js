@@ -1,7 +1,9 @@
+import os from 'os';
+import path from 'path';
 import low from 'lowdb';
 import FileSync from 'lowdb/adapters/FileSync';
 
-const adapter = new FileSync('db.json')
+const adapter = new FileSync(path.join(os.homedir(), 'db.json'));
 const db = low(adapter);
 
 db.defaults({ projects: [], times: [] }).write();
