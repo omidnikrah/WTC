@@ -1,7 +1,7 @@
 {
 	"name": "working-time-calculator",
 	"productName": "WTC",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Working Time Calculator",
 	"scripts": {
 		"build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
