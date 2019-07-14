@@ -7,11 +7,11 @@ import ProjectItem from './components/ProjectItem';
 import { getProjects } from '../../db';
 
 type State = {
-	projects: Array<string>,
+	projects: Array<string>
 };
 
 type Props = {
-	history: any,
+	history: any
 };
 
 class Home extends Component<Props, State> {
@@ -35,7 +35,8 @@ class Home extends Component<Props, State> {
 	};
 
 	handleGoToSettings = () => {
-		console.log('settings');
+		const { history: { push } } = this.props;
+		push(`/settings`);
 	};
 
 	renderHeader = () => (
@@ -63,9 +64,7 @@ class Home extends Component<Props, State> {
 		const { projects } = this.state;
 		return (
 			<Layout header={this.renderHeader()} footer={this.renderFooter()}>
-				{projects.length === 0 && (
-					<span className="empty-state">You haven't any projects yet!</span>
-				)}
+				{projects.length === 0 && <span className="empty-state">You haven't any projects yet!</span>}
 				{projects.map((project: any) => (
 					<ProjectItem key={`project-${project.name}-${project.color}`} name={project.name} color={project.color} />
 				))}

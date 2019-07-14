@@ -5,6 +5,7 @@ import HomePage from '../containers/Home';
 import ProjectPage from '../containers/Project';
 import AdvancedPage from '../containers/Advanced';
 import AddNewProjectPage from '../containers/AddNewProject';
+import SettingsPage from '../containers/Settings';
 import GlobalStyles from './global-styles';
 
 const Routes = () => (
@@ -27,6 +28,7 @@ const Routes = () => (
 								<Route path="/project/:projectName" component={ProjectPage} exact />
 								<Route path="/project/:projectName/advanced" component={AdvancedPage} exact />
 								<Route path="/addnewproject" component={AddNewProjectPage} exact />
+								<Route path="/settings" component={SettingsPage} exact />
 							</Fragment>
 						</Switch>
 					</CSSTransition>
