@@ -1,9 +1,11 @@
 // @flow
 import React, { Component, Fragment } from 'react';
+import cron from 'node-cron';
+import path from 'path';
 import Layout from '../../components/Layout';
 import Button from '../../components/Button';
 import { StartStopButton } from './styles';
-import { getProject, setTime, getProjectTimes } from '../../db';
+import { getProject, setTime, getProjectTimes, getSettings } from '../../db';
 import PriceFormatter from '../../utils/PriceFormatter';
 
 type State = {
@@ -24,6 +26,7 @@ class Project extends Component<Props, State> {
 			isStarted: false,
 			timer: 0
 		};
+		this.reminderCronJob = null;
 	}
 
 	componentDidMount() {
@@ -38,6 +41,9 @@ class Project extends Component<Props, State> {
 		const { timer } = this.state;
 		clearInterval(this.timerInterval);
 		setTime(timer, projectName);
+		if (this.reminderCronJob) {
+			this.reminderCronJob.destroy();
+		}
 	}
 
 	handleBack = () => {
@@ -121,6 +127,17 @@ class Project extends Component<Props, State> {
 	handleClickStartButton = () => {
 		const { isStarted, timer } = this.state;
 		const { match: { params: { projectName } } } = this.props;
+		const settings = getSettings();
+		const hasReminder = !!settings.reminderTime;
+		let reminderTime = '';
+		if (hasReminder) {
+			if (settings.reminderTime.includes('-m')) {
+				console.log(parseInt(settings.reminderTime));
+				reminderTime = `*/${parseInt(settings.reminderTime)} * * * *`;
+			} else if (settings.reminderTime.includes('-h')) {
+				reminderTime = `*/${parseInt(settings.reminderTime)} * * *`;
+			}
+		}
 		if (!isStarted) {
 			this.timerInterval = setInterval(() => {
 				// eslint-disable-next-line no-shadow
@@ -129,12 +146,24 @@ class Project extends Component<Props, State> {
 					timer: ++timer
 				}));
 			}, 1000);
+			if (hasReminder && reminderTime.length > 0) {
+				this.reminderCronJob = cron.schedule(reminderTime, function() {
+					new Notification('Reminder To STOP', {
+						body: `Are you working right now on ${projectName} project?`,
+						icon: path.join(__dirname, '../../resources/icons/64x64.png')
+					});
+				});
+				this.reminderCronJob.start();
+			}
 		} else {
 			clearInterval(this.timerInterval);
 			setTime(timer, projectName);
 			this.setState({
 				timer: 0
 			});
+			if (this.reminderCronJob) {
+				this.reminderCronJob.destroy();
+			}
 		}
 		// eslint-disable-next-line no-shadow
 		this.setState(({ isStarted }: any) => ({

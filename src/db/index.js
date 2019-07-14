@@ -6,7 +6,7 @@ import FileSync from 'lowdb/adapters/FileSync';
 const adapter = new FileSync(path.join(os.homedir(), 'db.json'));
 const db = low(adapter);
 
-db.defaults({ projects: [], times: [] }).write();
+db.defaults({ projects: [], times: [], settings: {} }).write();
 
 const getProjects = () => {
   return db.get('projects').value();
@@ -64,6 +64,22 @@ const removeProject = (projectName) => {
   db.get('times').remove({ projectName }).write();
 }
 
+const setReminderTime = (time) => {
+  if (time === 'disable') {
+    db.get('settings')
+    .unset('reminderTime')
+    .write();
+  } else {
+    db.get('settings')
+    .set('reminderTime', time)
+    .write();
+  }
+}
+
+const getSettings = () => {
+  return db.get('settings').value();
+}
+
 export {
   addNewProject,
   getProjects,
@@ -72,4 +88,6 @@ export {
   getProjectTimes,
   updateProject,
   removeProject,
+  setReminderTime,
+  getSettings,
 };

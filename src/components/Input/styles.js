@@ -9,6 +9,9 @@ export default styled.div`
     flex: 0.6;
     font-weight: 100;
   }
+  select {
+    flex: 1;
+  }
   input {
     padding: 10px 15px;
     border-radius: 3px;
