@@ -2,6 +2,7 @@
 <img src="https://raw.githubusercontent.com/omidnikrah/WTC/master/resources/icons/128x128.png" />
   <h3 align="center">WTC</h3>
   <p align="center">WTC is an application that can help you to calculate your working time and your total income.<p>
+  ![Bitbucket open issues](https://img.shields.io/bitbucket/issues-raw/omidnikrah/WTC.svg)
 </p>
 
 ## Get WTC
