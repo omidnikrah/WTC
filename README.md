@@ -4,7 +4,7 @@
   <p align="center">WTC is an application that can help you to calculate your working time and your total income.<p>
 </p>
 
-![Bitbucket open issues](https://img.shields.io/bitbucket/issues-raw/omidnikrah/WTC.svg)
+[![Bitbucket open issues](https://img.shields.io/bitbucket/issues-raw/omidnikrah/WTC.svg)](https://github.com/omidnikrah/WTC/issues)
 
 ## Get WTC
 
