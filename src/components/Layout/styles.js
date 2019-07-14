@@ -11,7 +11,7 @@ export default styled.div`
     font-size: 14px;
   }
   .content {
-    height: 64vh;
+    height: 63vh;
     overflow: auto;
     position: relative;
     margin-top: 70px;

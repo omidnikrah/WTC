@@ -4,24 +4,25 @@ import Layout from '../../components/Layout';
 import Button from '../../components/Button';
 import { StartStopButton } from './styles';
 import { getProject, setTime, getProjectTimes } from '../../db';
+import PriceFormatter from '../../utils/PriceFormatter';
 
 type State = {
 	projectData: any,
 	isStarted: boolean,
-	timer: number,
+	timer: number
 };
 type Props = {
 	match: any,
-	history: any,
+	history: any
 };
 
 class Project extends Component<Props, State> {
-	constructor(props : any) {
+	constructor(props: any) {
 		super(props);
 		this.state = {
 			projectData: {},
 			isStarted: false,
-			timer: 0,
+			timer: 0
 		};
 	}
 
@@ -51,6 +52,7 @@ class Project extends Component<Props, State> {
 
 	renderFooter = () => {
 		const { match: { params: { projectName } } } = this.props;
+		const { projectData } = this.state;
 		const seconds = getProjectTimes(projectName);
 		const totalIncome = this.calculateTotalIncome(seconds);
 		return (
@@ -59,10 +61,10 @@ class Project extends Component<Props, State> {
 					<span className="key">Total Time:</span>
 					<span className="value">{this.secondsToNormalTime(seconds)}</span>
 				</span>
-				{totalIncome && (
+				{projectData.incomePerHours && (
 					<span className="key-value">
 						<span className="key">Total Income:</span>
-						<span className="value">{totalIncome}</span>
+						<span className="value">{totalIncome || 0}</span>
 					</span>
 				)}
 			</div>
@@ -98,7 +100,7 @@ class Project extends Component<Props, State> {
 		const hours = Math.floor(duration / 3600);
 		const { projectData } = this.state;
 		if (projectData.incomePerHours && hours > 0) {
-			return hours * projectData.incomePerHours;
+			return PriceFormatter(hours * projectData.incomePerHours);
 		}
 	};
 
@@ -140,7 +142,7 @@ class Project extends Component<Props, State> {
 		}));
 	};
 
-	timerInterval : any;
+	timerInterval: any;
 
 	render() {
 		const { projectData, isStarted, timer } = this.state;

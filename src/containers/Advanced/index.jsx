@@ -2,29 +2,29 @@
 import React, { Component, Fragment } from 'react';
 import Layout from '../../components/Layout';
 import Button from '../../components/Button';
-import Input from "../../components/Input";
-import { getProject, updateProject, removeProject } from "../../db";
+import Input from '../../components/Input';
+import { getProject, updateProject, removeProject } from '../../db';
 
 type State = {
 	income: string,
-	projectData: any,
+	projectData: any
 };
 type Props = {
 	match: any,
-	history: any,
+	history: any
 };
 
 class Advanced extends Component<Props, State> {
 	state = {
 		income: '',
-		projectData: [],
+		projectData: []
 	};
 
 	componentDidMount() {
 		const { match: { params: { projectName } } } = this.props;
 		this.setState({
 			projectData: getProject(projectName),
-			income: getProject(projectName).incomePerHours ? getProject(projectName).incomePerHours : '',
+			income: getProject(projectName).incomePerHours ? getProject(projectName).incomePerHours : ''
 		});
 	}
 
@@ -32,7 +32,7 @@ class Advanced extends Component<Props, State> {
 		const { match: { params: { projectName } }, history: { push } } = this.props;
 		push('/');
 		removeProject(projectName);
-	}
+	};
 
 	handleInputChange = (event: any) => {
 		this.setState({
@@ -66,7 +66,7 @@ class Advanced extends Component<Props, State> {
 		const { match: { params: { projectName } }, history } = this.props;
 		const { income } = this.state;
 		updateProject(projectName, {
-			incomePerHours: income,
+			incomePerHours: income
 		});
 		history.goBack();
 	};
@@ -82,6 +82,7 @@ class Advanced extends Component<Props, State> {
 						type="text"
 						name="income"
 						value={income}
+						onlyNumber
 						onChange={this.handleInputChange}
 					/>
 					<Button
