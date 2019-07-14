@@ -5,7 +5,16 @@ import Button from '../../components/Button';
 import Input from "../../components/Input";
 import { getProject, updateProject, removeProject } from "../../db";
 
-class Advanced extends Component {
+type State = {
+	income: string,
+	projectData: any,
+};
+type Props = {
+	match: any,
+	history: any,
+};
+
+class Advanced extends Component<Props, State> {
 	state = {
 		income: '',
 		projectData: [],
@@ -25,7 +34,7 @@ class Advanced extends Component {
 		removeProject(projectName);
 	}
 
-	handleInputChange = (event) => {
+	handleInputChange = (event: any) => {
 		this.setState({
 			[event.target.name]: event.target.value
 		});

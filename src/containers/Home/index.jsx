@@ -6,7 +6,15 @@ import Button from '../../components/Button';
 import ProjectItem from './components/ProjectItem';
 import { getProjects } from '../../db';
 
-class Home extends Component {
+type State = {
+	projects: Array<string>,
+};
+
+type Props = {
+	history: any,
+};
+
+class Home extends Component<Props, State> {
 	state = {
 		projects: []
 	};

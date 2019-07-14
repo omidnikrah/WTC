@@ -2,7 +2,7 @@
 import React from 'react';
 import InputStyles from './styles';
 
-const Input = ({ label, id, errorMessage, ...rest }) => (
+const Input = ({ label, id, errorMessage, ...rest }: any) => (
 	<InputStyles>
 		{label && <label htmlFor={id}>{label}</label>}
 		<input {...rest} />

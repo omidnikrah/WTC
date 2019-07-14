@@ -5,7 +5,17 @@ import Button from '../../components/Button';
 import Input from '../../components/Input';
 import { addNewProject } from '../../db';
 
-class AddNewProject extends Component {
+type State = {
+	projectName: string,
+	projectColor: string,
+	errors: any,
+};
+type Props = {
+	match: any,
+	history: any,
+};
+
+class AddNewProject extends Component<Props, State> {
 	state = {
 		projectName: '',
 		projectColor: '#ff5526',
@@ -48,7 +58,7 @@ class AddNewProject extends Component {
 		}
 	};
 
-	handleInputChange = (event) => {
+	handleInputChange = (event: any) => {
 		this.setState({
 			[event.target.name]: event.target.value
 		});

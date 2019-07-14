@@ -5,8 +5,18 @@ import Button from '../../components/Button';
 import { StartStopButton } from './styles';
 import { getProject, setTime, getProjectTimes } from '../../db';
 
-class Project extends Component {
-	constructor(props) {
+type State = {
+	projectData: any,
+	isStarted: boolean,
+	timer: number,
+};
+type Props = {
+	match: any,
+	history: any,
+};
+
+class Project extends Component<Props, State> {
+	constructor(props : any) {
 		super(props);
 		this.state = {
 			projectData: {},
@@ -84,7 +94,7 @@ class Project extends Component {
 		);
 	};
 
-	calculateTotalIncome = (duration) => {
+	calculateTotalIncome = (duration: number) => {
 		const hours = Math.floor(duration / 3600);
 		const { projectData } = this.state;
 		if (projectData.incomePerHours && hours > 0) {
@@ -92,7 +102,7 @@ class Project extends Component {
 		}
 	};
 
-	secondsToNormalTime = (duration) => {
+	secondsToNormalTime = (duration: number) => {
 		let hours = Math.floor(duration / 3600);
 		let minutes = Math.floor((duration - hours * 3600) / 60);
 		let seconds = duration - hours * 3600 - minutes * 60;
@@ -100,7 +110,7 @@ class Project extends Component {
 		hours = hours < 10 ? `0${hours}` : hours;
 		minutes = minutes < 10 ? `0${minutes}` : minutes;
 		seconds = seconds < 10 ? `0${seconds}` : seconds;
-		if (hours > 0) {
+		if (Number(hours) > 0) {
 			return `${hours}:${minutes}:${seconds}`;
 		}
 		return `${minutes}:${seconds}`;
@@ -129,6 +139,8 @@ class Project extends Component {
 			isStarted: !isStarted
 		}));
 	};
+
+	timerInterval : any;
 
 	render() {
 		const { projectData, isStarted, timer } = this.state;
