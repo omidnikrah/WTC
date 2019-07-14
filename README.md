@@ -5,6 +5,8 @@
 </p>
 
 [![Bitbucket open issues](https://img.shields.io/bitbucket/issues-raw/omidnikrah/WTC.svg)](https://github.com/omidnikrah/WTC/issues)
+![GitHub release](https://img.shields.io/github/release/omidnikrah/WTC.svg)
+![GitHub All Releases](https://img.shields.io/github/downloads/omidnikrah/WTC/total.svg)
 
 ## Get WTC
 
