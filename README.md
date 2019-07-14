@@ -1,6 +1,8 @@
-# Working Time Calculator
-
-WTC is an application that can help you to calculate your working time and your total income.
+<p align="center">
+<img src="https://raw.githubusercontent.com/omidnikrah/WTC/master/resources/icons/256x256.png" />
+  <h3 align="center">WTC</h3>
+  <p align="center">WTC is an application that can help you to calculate your working time and your total income.<p>
+</p>
 
 ## Demo:
 
