@@ -3,7 +3,6 @@ import path from 'path';
 import low from 'lowdb';
 import FileSync from 'lowdb/adapters/FileSync';
 
-console.log(os.homedir());
 const adapter = new FileSync(path.join(os.homedir(), 'db.json'));
 const db = low(adapter);
 
