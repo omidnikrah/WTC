@@ -4,6 +4,12 @@ export default styled.div`
   .header, .content {
     padding: 20px 30px;
   }
+  .empty-state {
+    display: block;
+    text-align: center;
+    margin: 60px 0px;
+    font-size: 14px;
+  }
   .content {
     height: 64vh;
     overflow: auto;

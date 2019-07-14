@@ -55,6 +55,9 @@ class Home extends Component {
 		const { projects } = this.state;
 		return (
 			<Layout header={this.renderHeader()} footer={this.renderFooter()}>
+				{projects.length === 0 && (
+					<span className="empty-state">You haven't any projects yet!</span>
+				)}
 				{projects.map((project: any) => (
 					<ProjectItem key={`project-${project.name}-${project.color}`} name={project.name} color={project.color} />
 				))}
