@@ -4,6 +4,10 @@
   <p align="center">WTC is an application that can help you to calculate your working time and your total income.<p>
 </p>
 
+## Get WTC
+
+**[Download the latest release](https://github.com/omidnikrah/WTC/releases)** (macOS only)
+
 ## Demo:
 
 #### Mac:
