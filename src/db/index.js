@@ -3,6 +3,7 @@ import path from 'path';
 import low from 'lowdb';
 import FileSync from 'lowdb/adapters/FileSync';
 
+console.log(os.homedir());
 const adapter = new FileSync(path.join(os.homedir(), 'db.json'));
 const db = low(adapter);
 
@@ -59,6 +60,11 @@ const updateProject = (projectName, data) => {
     .write()
 };
 
+const removeProject = (projectName) => {
+  db.get('projects').remove({ name: projectName }).write();
+  db.get('times').remove({ projectName }).write();
+}
+
 export {
   addNewProject,
   getProjects,
@@ -66,4 +72,5 @@ export {
   setTime,
   getProjectTimes,
   updateProject,
+  removeProject,
 };

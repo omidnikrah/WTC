@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 import Layout from '../../components/Layout';
 import Button from '../../components/Button';
 import Input from "../../components/Input";
-import {getProject, updateProject} from "../../db";
+import { getProject, updateProject, removeProject } from "../../db";
 
 class Advanced extends Component {
 	state = {
@@ -17,6 +17,12 @@ class Advanced extends Component {
 			projectData: getProject(projectName),
 			income: getProject(projectName).incomePerHours ? getProject(projectName).incomePerHours : '',
 		});
+	}
+
+	handleRemoveProject = () => {
+		const { match: { params: { projectName } }, history: { push } } = this.props;
+		push('/');
+		removeProject(projectName);
 	}
 
 	handleInputChange = (event) => {
@@ -57,6 +63,7 @@ class Advanced extends Component {
 	};
 
 	render() {
+		const { match: { params: { projectName } } } = this.props;
 		const { income, projectData } = this.state;
 		return (
 			<Layout headerColor={projectData.color} header={this.renderHeader()}>
@@ -80,6 +87,18 @@ class Advanced extends Component {
 						Update
 					</Button>
 				</form>
+				<Button
+					style={{
+						padding: '10px 20px',
+						marginTop: 20,
+						fontWeight: 'bold',
+						backgroundColor: 'red'
+					}}
+					type="submit"
+					onClick={this.handleRemoveProject}
+				>
+					Remove {projectName} Project
+				</Button>
 			</Layout>
 		);
 	}
