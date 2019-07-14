@@ -1,7 +1,7 @@
 {
 	"name": "working-time-calculator",
 	"productName": "WTC",
-	"version": "0.17.0",
+	"version": "1.0.0",
 	"description": "Working Time Calculator",
 	"scripts": {
 		"build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
@@ -56,7 +56,7 @@
 	"main": "./src/app/main.prod.js",
 	"build": {
 		"productName": "WTC",
-		"appId": "org.omidnikrah.wtc",
+		"appId": "org.omidnikrah.WTC",
 		"files": [
 			"resources",
 			"src/app/dist/",
@@ -92,8 +92,8 @@
 		},
 		"publish": {
 			"provider": "github",
-			"owner": "wtc",
-			"repo": "wtc",
+			"owner": "omidnikrah",
+			"repo": "WTC",
 			"private": false
 		}
 	},
@@ -107,10 +107,10 @@
 	},
 	"license": "MIT",
 	"bugs": {
-		"url": ""
+		"url": "https://github.com/omidnikrah/WTC/issues"
 	},
 	"keywords": [ "electron", "boilerplate", "react", "flow", "sass", "webpack", "hot", "reload" ],
-	"homepage": "",
+	"homepage": "https://github.com/omidnikrah/WTC",
 	"jest": {
 		"testURL": "http://localhost/",
 		"moduleNameMapper": {
