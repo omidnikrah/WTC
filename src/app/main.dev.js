@@ -24,18 +24,12 @@ if (process.platform === 'darwin') {
   app.dock.hide();
 }
 
-app.on('window-all-closed', app.quit);
-app.on('before-quit', () => {
-    mainWindow.removeAllListeners('close');
-    mainWindow.close();
-});
-
+let window = null;
 app.on('ready', async () => {
   const tray = new Tray(
     path.join(__dirname, '../../resources/icon.png'),
   );
 
-  let window = null;
   const showWindow = () => {
     const trayPos = tray.getBounds();
     const windowPos = window.getBounds();
@@ -129,4 +123,10 @@ app.on('ready', async () => {
   autoUpdater.on('update-downloaded', () => {
     window.webContents.send('update-message', 'Update downloaded');
   });
+});
+
+app.on('window-all-closed', app.quit);
+app.on('before-quit', () => {
+  window.removeAllListeners('close');
+  window.close();
 });
