@@ -10,7 +10,7 @@
 
 ## Get WTC
 
-**[Download the latest release](https://github.com/omidnikrah/WTC/releases)** (macOS only)
+**[Download the latest release](https://github.com/omidnikrah/WTC/releases)** (macOS & windows)
 
 ## Demo:
 
