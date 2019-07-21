@@ -15,5 +15,7 @@
 ## Demo:
 
 #### Mac:
-<img src="https://raw.githubusercontent.com/omidnikrah/WTC/master/wtc-preview.gif?token=ACC7BXFDSYQU4CBVTH6NEO25FL6FI" width="500px" />
+<img src="https://raw.githubusercontent.com/omidnikrah/WTC/master/wtc-preview-mac.gif?token=ACC7BXFDSYQU4CBVTH6NEO25FL6FI" width="500px" />
+#### Windows:
+<img src="https://raw.githubusercontent.com/omidnikrah/WTC/master/wtc-preview-windows.gif?token=ACC7BXFDSYQU4CBVTH6NEO25FL6FI" width="500px" />
 
