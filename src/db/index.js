@@ -76,9 +76,15 @@ const setReminderTime = (time) => {
   }
 }
 
-const getSettings = () => {
-  return db.get('settings').value();
-}
+const getSettings = () => db.get('settings').value();
+
+const resetProjectTimes = (projectName) => {
+  db.get('times')
+      .find({ projectName })
+      .assign({ seconds: 0})
+      .write();
+};
+
 
 export {
   addNewProject,
@@ -90,4 +96,5 @@ export {
   removeProject,
   setReminderTime,
   getSettings,
+  resetProjectTimes,
 };

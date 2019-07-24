@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 import Layout from '../../components/Layout';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
-import { getProject, updateProject, removeProject } from '../../db';
+import {getProject, updateProject, removeProject, resetProjectTimes} from '../../db';
 
 type State = {
 	income: string,
@@ -32,6 +32,12 @@ class Advanced extends Component<Props, State> {
 		const { match: { params: { projectName } }, history: { push } } = this.props;
 		push('/');
 		removeProject(projectName);
+	};
+
+	handleResetProjectTimes = () => {
+		const { match: { params: { projectName } }, history: { goBack } } = this.props;
+		goBack();
+		resetProjectTimes(projectName);
 	};
 
 	handleInputChange = (event: any) => {
@@ -108,6 +114,19 @@ class Advanced extends Component<Props, State> {
 					onClick={this.handleRemoveProject}
 				>
 					Remove {projectName} Project
+				</Button>
+				<Button
+					style={{
+						padding: '10px 20px',
+						marginTop: 20,
+						fontWeight: 'bold',
+						marginLeft: 10,
+						backgroundColor: '#8e8e8e'
+					}}
+					type="submit"
+					onClick={this.handleResetProjectTimes}
+				>
+					Reset Project Times
 				</Button>
 			</Layout>
 		);
