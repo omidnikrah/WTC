@@ -13,7 +13,6 @@ const Selectbox = ({ label, id, errorMessage, options, value, ...rest }: any) =>
 			{options.map((option, index) => (
 				<Fragment>
 					<option key={`option--${option.value}-${index}`} value={option.value} selected={value === option.value}>
-						{console.log(value, option.value)}
 						{option.label}
 					</option>
 				</Fragment>

@@ -1,6 +1,7 @@
 // @flow
 import React, { Component, Fragment } from 'react';
 import { remote } from 'electron';
+import { connect } from 'react-redux';
 import Layout from '../../components/Layout';
 import Button from '../../components/Button';
 import ProjectItem from './components/ProjectItem';
@@ -14,6 +15,9 @@ type Props = {
 	history: any
 };
 
+@connect((state) => ({
+	isLoading: state.HomeReducer.isLoading,
+}), {})
 class Home extends Component<Props, State> {
 	state = {
 		projects: []

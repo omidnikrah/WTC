@@ -132,7 +132,6 @@ class Project extends Component<Props, State> {
 		let reminderTime = '';
 		if (hasReminder) {
 			if (settings.reminderTime.includes('-m')) {
-				console.log(parseInt(settings.reminderTime));
 				reminderTime = `*/${parseInt(settings.reminderTime)} * * * *`;
 			} else if (settings.reminderTime.includes('-h')) {
 				reminderTime = `*/${parseInt(settings.reminderTime)} * * *`;
