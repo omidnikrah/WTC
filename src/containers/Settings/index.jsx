@@ -46,9 +46,9 @@ class Settings extends Component<Props, State> {
 		history.goBack();
 	};
 
-	handleInputChange = (event: any) => {
+	handleInputChange = ({ target: { name, value } }: any) => {
 		this.setState({
-			[event.target.name]: event.target.value
+			[name]: value
 		});
 	};
 
