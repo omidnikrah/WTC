@@ -13,7 +13,7 @@
 **[Download the latest release](https://github.com/omidnikrah/WTC/releases)** (macOS & windows)
 
 
-## Demo:
+## 😎 Demo:
 
 #### Mac:
 <img src="https://raw.githubusercontent.com/omidnikrah/WTC/master/wtc-preview-mac.gif?token=ACC7BXFDSYQU4CBVTH6NEO25FL6FI" width="500px" />
