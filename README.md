@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/resources/icons/256x256.png" />
+  <img src="/resources/icons/128x128.png" />
   <h3 align="center">WTC</h3>
   <p align="center">WTC is an application that can help you to calculate your working time and your total income.<p>
 <p align="center"><a href="https://github.com/omidnikrah/WTC/issues"><img src="https://img.shields.io/bitbucket/issues-raw/omidnikrah/WTC.svg" alt="Bitbucket open issues"></a>
